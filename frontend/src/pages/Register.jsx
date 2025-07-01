@@ -12,11 +12,18 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await register({ name, email, password });
+    setError('');
+    let result = await register({ name, email, password });
+    if (!result.success && result.message?.includes('timeout')) {
+      setError('El servidor está despertando. Reintentando automáticamente...');
+      // Esperar 5 segundos y reintentar
+      await new Promise(res => setTimeout(res, 5000));
+      result = await register({ name, email, password });
+    }
     if (result.success) {
       navigate('/');
     } else {
-      setError(result.message);
+      setError(result.message || 'Error al registrar. Si el problema persiste, reintenta en unos segundos.');
     }
   };
 
