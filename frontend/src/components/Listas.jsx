@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, Table, Modal, ToastContainer, Toast, Form } from 'react-bootstrap';
 import api from '../config/api';
 import { useAuth } from '../contexts/AuthContext';
-import translations from '../translations';
+import { translations } from '../translations';
 
 const Listas = () => {
   const [rubros, setRubros] = useState([]);

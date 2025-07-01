@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Button, Table, Modal, Form, ToastContainer, Toast } from 'react-bootstrap';
-import translations from '../translations';
+import { translations } from '../translations';
 
 const Proveedores = () => {
   const [proveedores, setProveedores] = useState([]);

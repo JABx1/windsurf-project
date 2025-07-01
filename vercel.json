@@ -1,30 +1,30 @@
 {
   "version": 2,
+  "scope": "jorgebestel-1933",
   "builds": [
     {
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "dist",
-        "installCommand": "npm install && cd frontend && npm install",
-        "buildCommand": "cd frontend && npm run build",
-        "outputDirectory": "frontend/dist"
+        "installCommand": "cd frontend && npm install",
+        "buildCommand": "cd frontend && npm run build"
       }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/frontend/index.html"
     }
   ],
+  "env": {
+    "NODE_ENV": "production"
+  },
   "build": {
     "env": {
       "NODE_VERSION": "18.x",
       "VITE_API_URL": "https://abitare-backend.onrender.com/api"
     }
-  },
-  "env": {
-    "NODE_ENV": "production"
   }
 }
