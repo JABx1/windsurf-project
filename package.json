@@ -1,6 +1,28 @@
 {
   "dependencies": {
+    "child_process": "^1.0.2",
     "dotenv": "^17.0.0",
-    "mongoose": "^8.16.1"
-  }
+    "fs": "^0.0.1-security",
+    "mongoose": "^8.16.1",
+    "path": "^0.12.7"
+  },
+  "name": "windsurf-project",
+  "version": "1.0.0",
+  "description": "Sistema web para la gestión de proveedores, insumos y listas de precios.",
+  "main": "setup-mongodb.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JABx1/windsurf-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/JABx1/windsurf-project/issues"
+  },
+  "homepage": "https://github.com/JABx1/windsurf-project#readme"
 }
