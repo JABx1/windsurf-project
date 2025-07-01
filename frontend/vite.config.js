@@ -3,14 +3,7 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 
 export default defineConfig({
-  plugins: [
-    react({
-      jsxImportSource: '@emotion/react',
-      babel: {
-        plugins: ['@babel/plugin-transform-react-jsx'],
-      },
-    }),
-  ],
+  plugins: [react()],
   server: {
     port: 3000,
     open: true,
@@ -19,9 +12,6 @@ export default defineConfig({
     outDir: 'dist',
     emptyOutDir: true,
     sourcemap: true,
-    commonjsOptions: {
-      transformMixedEsModules: true,
-    },
   },
   resolve: {
     alias: {
