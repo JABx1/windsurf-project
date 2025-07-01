@@ -1,0 +1,67 @@
+/* Estilos base */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Estilos adicionales para la aplicación */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Estilos para el navbar */
+.navbar {
+  margin-bottom: 20px;
+}
+
+/* Estilos para los formularios */
+.form-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Estilos para botones */
+.btn-primary {
+  margin-right: 10px;
+}
+
+/* Estilos para tablas */
+.table {
+  margin-top: 20px;
+}
+
+/* Estilos para mensajes de error */
+.error-message {
+  color: #dc3545;
+  margin-top: 5px;
+}
+
+/* Estilos para mensajes de éxito */
+.success-message {
+  color: #28a745;
+  margin-top: 5px;
+}

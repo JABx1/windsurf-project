@@ -1,0 +1,23 @@
+{
+  "github": {
+    "repo": "tu-usuario/tu-repositorio",
+    "branch": "main"
+  },
+  "render": {
+    "serviceName": "abitare-backend",
+    "region": "oregon",
+    "env": {
+      "NODE_ENV": "production",
+      "MONGODB_URI": "mongodb+srv://Zkyhewbf:64740429-f602-4388-bcba-30706fe842b8@cluster0.00zixai.mongodb.net/abitare?retryWrites=true&w=majority",
+      "JWT_SECRET": "un_valor_seguro_aleatorio_123",
+      "JWT_EXPIRE": "30d",
+      "PORT": "10000"
+    }
+  },
+  "vercel": {
+    "projectName": "abitare-frontend",
+    "framework": "vite",
+    "buildCommand": "npm run build",
+    "outputDirectory": "dist"
+  }
+}
