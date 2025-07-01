@@ -4,7 +4,8 @@
     "dotenv": "^17.0.0",
     "fs": "^0.0.1-security",
     "mongoose": "^8.16.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "react-router-dom": "^7.6.3"
   },
   "name": "windsurf-project",
   "version": "1.0.0",
