@@ -3,7 +3,11 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react({
+      include: '**/*.{jsx,tsx}',
+    })
+  ],
   server: {
     port: 3000,
     open: true,
@@ -15,6 +19,9 @@ export default defineConfig({
     minify: 'terser',
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+      },
       output: {
         manualChunks: (id) => {
           if (id.includes('node_modules')) {
@@ -25,11 +32,12 @@ export default defineConfig({
     },
   },
   resolve: {
+    extensions: ['.js', '.jsx', '.json'],
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
   },
-  base: '/frontend/',
+  base: '/',
   esbuild: {
     jsxInject: `import React from 'react'`,
   },
