@@ -17,6 +17,9 @@ yarn.lock
 /dist
 /build
 
+# Vercel
+.vercel
+
 # IDE and Editor directories
 .vscode/*
 !.vscode/extensions.json
