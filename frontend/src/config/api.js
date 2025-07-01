@@ -12,11 +12,15 @@ console.log(`API Base URL: ${API_BASE_URL}`);
 const api = axios.create({
   baseURL: API_BASE_URL,
   timeout: 30000, // 30 segundos de timeout
+  withCredentials: true, // Importante para enviar cookies/tokens
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
   },
 });
+
+// Configuración global de Axios para manejar CORS
+document.axios = api; // Opcional: hacerlo accesible globalmente para depuración
 
 // Interceptor para agregar el token de autenticación a las peticiones
 api.interceptors.request.use(

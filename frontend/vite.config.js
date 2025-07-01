@@ -19,6 +19,28 @@ export default defineConfig({
     strictPort: true,
     hmr: {
       overlay: true
+    },
+    proxy: {
+      // Proxy para las peticiones a la API
+      '/api': {
+        target: 'http://localhost:5000', // URL de tu backend local
+        changeOrigin: true,
+        secure: false,
+        ws: true,
+        configure: (proxy, _options) => {
+          proxy.on('error', (err, _req, _res) => {
+            console.error('Error del proxy:', err);
+          });
+          proxy.on('proxyReq', (proxyReq, req, _res) => {
+            console.log('Solicitud al backend:', req.method, req.url);
+          });
+        }
+      }
+    },
+    // Configuración de CORS para desarrollo
+    cors: {
+      origin: true, // Permite todos los orígenes en desarrollo
+      credentials: true
     }
   },
   

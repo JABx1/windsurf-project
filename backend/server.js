@@ -10,10 +10,39 @@ const { verifyToken } = require('./middleware/auth');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Configuración de CORS
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://abitare.vercel.app',
+  'https://*.vercel.app',
+  'https://*.onrender.com'
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.some(allowedOrigin => 
+      origin === allowedOrigin || 
+      origin.endsWith(new URL(allowedOrigin).hostname) ||
+      allowedOrigin.includes(origin.replace(/https?:\/\//, ''))
+    )) {
+      callback(null, true);
+    } else {
+      console.warn('Origen no permitido por CORS:', origin);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(morgan('dev'));
+
+// Manejar preflight para todas las rutas
+app.options('*', cors(corsOptions));
 
 // Conexión a MongoDB
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/windsurf-app', {
