@@ -18,6 +18,11 @@ const allowedOrigins = [
   'https://*.onrender.com'
 ];
 
+console.log('NODE_ENV:', process.env.NODE_ENV);
+const safeUri = process.env.MONGODB_URI.replace(/:\/\/.*?:.*?@/, '://<user>:<pass>@');
+console.log('Intentando conectar a MongoDB con URI:', safeUri);
+
+
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.some(allowedOrigin => 
