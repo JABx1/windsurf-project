@@ -1,14 +1,20 @@
 import axios from 'axios';
 
 // Configuración de la API
-export const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const isProduction = import.meta.env.PROD;
+export const API_BASE_URL = isProduction 
+  ? 'https://abitare-backend.onrender.com/api' 
+  : 'http://localhost:5000/api';
+
+console.log(`API Base URL: ${API_BASE_URL}`);
 
 // Configuración de Axios
-
 const api = axios.create({
   baseURL: API_BASE_URL,
+  timeout: 10000, // 10 segundos de timeout
   headers: {
     'Content-Type': 'application/json',
+    'Accept': 'application/json',
   },
 });
 
@@ -30,11 +36,25 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response && error.response.status === 401) {
-      // Token expirado o inválido
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
-      window.location.href = '/login';
+    if (error.response) {
+      // El servidor respondió con un código de estado fuera del rango 2xx
+      if (error.response.status === 401) {
+        // Token expirado o inválido
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        // Redirigir a login solo si no estamos ya en la página de login
+        if (window.location.pathname !== '/login') {
+          window.location.href = '/login';
+        }
+      } else if (error.response.status >= 500) {
+        console.error('Error del servidor:', error.response.data);
+      }
+    } else if (error.request) {
+      // La solicitud fue hecha pero no se recibió respuesta
+      console.error('No se recibió respuesta del servidor:', error.request);
+    } else {
+      // Algo pasó en la configuración de la solicitud que generó un error
+      console.error('Error al configurar la solicitud:', error.message);
     }
     return Promise.reject(error);
   }

@@ -11,10 +11,11 @@
   "description": "Sistema web para la gestión de proveedores, insumos y listas de precios.",
   "main": "setup-mongodb.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"No tests specified\" && exit 0",
     "build": "cd frontend && npm install && npm run build",
-    "start": "cd frontend && npm run preview",
-    "dev": "cd frontend && npm run dev"
+    "start": "cd frontend && npm run preview -- --port $PORT",
+    "dev": "cd frontend && npm run dev",
+    "vercel-build": "npm install && cd frontend && npm install && npm run build"
   },
   "repository": {
     "type": "git",

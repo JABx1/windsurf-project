@@ -7,7 +7,7 @@
       "config": {
         "distDir": "dist",
         "installCommand": "npm install && cd frontend && npm install",
-        "buildCommand": "node vercel-build.js",
+        "buildCommand": "cd frontend && npm run build",
         "outputDirectory": "frontend/dist"
       }
     }
@@ -18,11 +18,13 @@
       "dest": "/index.html"
     }
   ],
-  "env": {
-    "NODE_VERSION": "18.x"
+  "build": {
+    "env": {
+      "NODE_VERSION": "18.x",
+      "VITE_API_URL": "https://abitare-backend.onrender.com/api"
+    }
   },
-  "buildCommand": "node vercel-build.js",
-  "installCommand": "npm install && cd frontend && npm install",
-  "framework": "create-react-app",
-  "outputDirectory": "frontend/dist"
+  "env": {
+    "NODE_ENV": "production"
+  }
 }
