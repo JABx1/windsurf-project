@@ -11,17 +11,25 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     emptyOutDir: true,
-    sourcemap: true,
+    sourcemap: false,
+    minify: 'terser',
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks: (id) => {
+          if (id.includes('node_modules')) {
+            return 'vendor';
+          }
+        },
+      },
+    },
   },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
   },
-  define: {
-    'process.env': {}
-  },
-  base: './',
+  base: '/frontend/',
   esbuild: {
     jsxInject: `import React from 'react'`,
   },
