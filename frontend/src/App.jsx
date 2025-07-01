@@ -1,15 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
-import { AuthProvider } from './contexts/AuthContext';
-import PrivateRoute from './components/PrivateRoute';
-import Navbar from './components/layout/Navbar';
-import Login from './components/auth/Login';
-import Register from './components/auth/Register';
-import Listas from './components/Listas';
-import Proveedores from './components/Proveedores';
-import Insumos from './components/Insumos';
-import ListasPrecios from './components/ListasPrecios';
+import { AuthProvider } from './contexts/AuthContext.jsx';
+import PrivateRoute from './components/PrivateRoute.jsx';
+import Navbar from './components/layout/Navbar.jsx';
+import Login from './components/auth/Login.jsx';
+import Register from './components/auth/Register.jsx';
+import Listas from './components/Listas.jsx';
+import Proveedores from './components/Proveedores.jsx';
+import Insumos from './components/Insumos.jsx';
+import ListasPrecios from './components/ListasPrecios.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {

@@ -5,40 +5,24 @@ import path from 'path';
 export default defineConfig({
   plugins: [
     react({
-      include: '**/*.{jsx,tsx}',
+      jsxRuntime: 'classic'
     })
   ],
   server: {
     port: 3000,
-    open: true,
+    open: true
   },
   build: {
     outDir: 'dist',
-    emptyOutDir: true,
-    sourcemap: false,
-    minify: 'terser',
-    chunkSizeWarningLimit: 1000,
-    rollupOptions: {
-      input: {
-        main: path.resolve(__dirname, 'index.html'),
-      },
-      output: {
-        manualChunks: (id) => {
-          if (id.includes('node_modules')) {
-            return 'vendor';
-          }
-        },
-      },
-    },
-  },
-  resolve: {
-    extensions: ['.js', '.jsx', '.json'],
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
+    emptyOutDir: true
   },
   base: '/',
-  esbuild: {
-    jsxInject: `import React from 'react'`,
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src')
+    }
   },
+  esbuild: {
+    jsxInject: `import React from 'react'`
+  }
 });

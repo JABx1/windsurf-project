@@ -5,7 +5,10 @@
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist"
+        "distDir": "dist",
+        "installCommand": "npm install && cd frontend && npm install",
+        "buildCommand": "node vercel-build.js",
+        "outputDirectory": "frontend/dist"
       }
     }
   ],
@@ -14,5 +17,12 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ]
+  ],
+  "env": {
+    "NODE_VERSION": "18.x"
+  },
+  "buildCommand": "node vercel-build.js",
+  "installCommand": "npm install && cd frontend && npm install",
+  "framework": "create-react-app",
+  "outputDirectory": "frontend/dist"
 }
