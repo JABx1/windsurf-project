@@ -1,11 +1,15 @@
 import axios from 'axios';
 
 // Configuración de la API
-const isProduction = import.meta.env.PROD;
-export const API_BASE_URL = isProduction 
-  ? 'https://windsurf-project-b1er.onrender.com/api' 
-  : 'http://localhost:5000/api';
+export const API_BASE_URL =
+  (import.meta.env.PROD
+    ? 'https://windsurf-project-b1er.onrender.com/api'
+    : (import.meta.env.VITE_API_URL || 'http://localhost:5000/api'));
 
+export const FRONTEND_URL =
+  (import.meta.env.PROD
+    ? 'https://abitare.vercel.app'
+    : 'http://localhost:5173');
 console.log(`API Base URL: ${API_BASE_URL}`);
 
 // Configuración de Axios
