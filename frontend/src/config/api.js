@@ -3,7 +3,7 @@ import axios from 'axios';
 // Configuración de la API
 const isProduction = import.meta.env.PROD;
 export const API_BASE_URL = isProduction 
-  ? 'https://abitare-backend.onrender.com/api' 
+  ? 'https://windsurf-project-b1er.onrender.com/api' 
   : 'http://localhost:5000/api';
 
 console.log(`API Base URL: ${API_BASE_URL}`);
